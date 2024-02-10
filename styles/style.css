@@ -5,7 +5,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
+html, body{
     width: 100vw;
     height: 100vh;
     background-color: lightblue;
@@ -74,3 +74,23 @@ main{
     color: red;
 }
 
+@media screen and (max-width: 600px){
+
+    body{
+        overflow: hidden;
+    }
+
+    main{
+        width: 300px;
+        height: 300px;
+    }
+
+    .container{
+        height: 100px;
+    }
+
+    .pad{
+        width: 91px;
+    }
+
+}

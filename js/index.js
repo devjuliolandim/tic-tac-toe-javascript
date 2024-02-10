@@ -107,8 +107,6 @@ function verifyVictory(x_Or_O){
 
         finalAdjusts(PADS_DOM[2], PADS_DOM[4], PADS_DOM[6])
 
-        
-        
     }
 
     //VERTICAL VICTORY
@@ -144,7 +142,6 @@ function finalAdjusts(x,y,z){
     })
 
 }
-
 
 
 //Code Itself
