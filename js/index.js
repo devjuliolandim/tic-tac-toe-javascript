@@ -25,6 +25,11 @@ const handleClick = function() {
 }
 
 const REMATCH_BUTTON = document.getElementById('rematch').onclick = () =>{
+
+    player1Turn = false
+    player2Turn = false
+
+
     PADS_DOM.forEach(pad =>{
         pad.innerHTML = ""
         pad.style.color = "black"
@@ -54,7 +59,7 @@ function whoStart(){
     if(random == 1){
         player1Turn = true
         changeLettering()
-    }else{
+    }else if(random == 2){
         player2Turn = true
         changeLettering()
     }
@@ -94,12 +99,16 @@ function verifyVictory(x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
         finalAdjusts(PADS_DOM[0], PADS_DOM[4], PADS_DOM[8])
+        
     }
 
     else if(PADS_DOM[2].innerHTML == x_Or_O && PADS_DOM[4].innerHTML == x_Or_O && PADS_DOM[6].innerHTML == x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
         finalAdjusts(PADS_DOM[2], PADS_DOM[4], PADS_DOM[6])
+
+        
+        
     }
 
     //VERTICAL VICTORY
@@ -135,6 +144,7 @@ function finalAdjusts(x,y,z){
     })
 
 }
+
 
 
 //Code Itself
