@@ -22,12 +22,23 @@ const handleClick = function() {
     }
 
     pad.removeEventListener('click', handleClick)
+    playsCount++
+    
+    if(playsCount == 9){
+        PLAYER_INFO.innerHTML = "DRAW!"
+        PLAYER_INFO.style.color = "green"
+        PADS_DOM.forEach(pad =>{
+            pad.style.color = "green"
+        })
+    }
+
 }
 
 const REMATCH_BUTTON = document.getElementById('rematch').onclick = () =>{
 
     player1Turn = false
     player2Turn = false
+    playsCount = 0
 
 
     PADS_DOM.forEach(pad =>{
@@ -46,6 +57,7 @@ const REMATCH_BUTTON = document.getElementById('rematch').onclick = () =>{
 //Variables
 let player1Turn = false
 let player2Turn = false
+let playsCount = 0
 
 //Functions
 PADS_DOM.forEach(pad => {
@@ -81,31 +93,31 @@ function verifyVictory(x_Or_O){
     if(PADS_DOM[0].innerHTML == x_Or_O && PADS_DOM[1].innerHTML == x_Or_O && PADS_DOM[2].innerHTML == x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
-        finalAdjusts(PADS_DOM[0], PADS_DOM[1], PADS_DOM[2])
+        finalAdjusts(PADS_DOM[0], PADS_DOM[1], PADS_DOM[2], x_Or_O)
     }
     else if(PADS_DOM[3].innerHTML == x_Or_O && PADS_DOM[4].innerHTML == x_Or_O && PADS_DOM[5].innerHTML == x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
-        finalAdjusts(PADS_DOM[3], PADS_DOM[4], PADS_DOM[5])
+        finalAdjusts(PADS_DOM[3], PADS_DOM[4], PADS_DOM[5], x_Or_O)
     }
     else if(PADS_DOM[6].innerHTML == x_Or_O && PADS_DOM[7].innerHTML == x_Or_O && PADS_DOM[8].innerHTML == x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
-        finalAdjusts(PADS_DOM[6], PADS_DOM[7], PADS_DOM[8])
+        finalAdjusts(PADS_DOM[6], PADS_DOM[7], PADS_DOM[8], x_Or_O)
     }
 
     //DIAGONAL VICTORY
     else if(PADS_DOM[0].innerHTML == x_Or_O && PADS_DOM[4].innerHTML == x_Or_O && PADS_DOM[8].innerHTML == x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
-        finalAdjusts(PADS_DOM[0], PADS_DOM[4], PADS_DOM[8])
+        finalAdjusts(PADS_DOM[0], PADS_DOM[4], PADS_DOM[8], x_Or_O)
         
     }
 
     else if(PADS_DOM[2].innerHTML == x_Or_O && PADS_DOM[4].innerHTML == x_Or_O && PADS_DOM[6].innerHTML == x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
-        finalAdjusts(PADS_DOM[2], PADS_DOM[4], PADS_DOM[6])
+        finalAdjusts(PADS_DOM[2], PADS_DOM[4], PADS_DOM[6], x_Or_O)
 
     }
 
@@ -113,29 +125,39 @@ function verifyVictory(x_Or_O){
     else if(PADS_DOM[0].innerHTML == x_Or_O && PADS_DOM[3].innerHTML == x_Or_O && PADS_DOM[6].innerHTML == x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
-        finalAdjusts(PADS_DOM[0], PADS_DOM[3], PADS_DOM[6])
+        finalAdjusts(PADS_DOM[0], PADS_DOM[3], PADS_DOM[6], x_Or_O)
     }
 
     else if(PADS_DOM[1].innerHTML == x_Or_O && PADS_DOM[4].innerHTML == x_Or_O && PADS_DOM[7].innerHTML == x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
-        finalAdjusts(PADS_DOM[1], PADS_DOM[4], PADS_DOM[7])
+        finalAdjusts(PADS_DOM[1], PADS_DOM[4], PADS_DOM[7], x_Or_O)
     }
 
     else if(PADS_DOM[2].innerHTML == x_Or_O && PADS_DOM[5].innerHTML == x_Or_O && PADS_DOM[8].innerHTML == x_Or_O){
         PLAYER_INFO.innerHTML = `Player ${x_Or_O} wins!`
 
-        finalAdjusts(PADS_DOM[2], PADS_DOM[5], PADS_DOM[8])
+        finalAdjusts(PADS_DOM[2], PADS_DOM[5], PADS_DOM[8], x_Or_O)
     }
 
 }
 
-function finalAdjusts(x,y,z){
+function finalAdjusts(x,y,z, whoWin){
+   
+   if(whoWin == "X"){
     x.style.color = "red"
     y.style.color = "red"
     z.style.color = "red"
-
     PLAYER_INFO.style.color = "red"
+   }else{
+    x.style.color = "blue"
+    y.style.color = "blue"
+    z.style.color = "blue"
+    PLAYER_INFO.style.color = "blue"
+
+   }
+   
+    
 
     PADS_DOM.forEach(pad =>{
         pad.removeEventListener('click', handleClick)

@@ -82,6 +82,9 @@ main{
     body{
         overflow: hidden;
     }
+    h2{
+        margin-top: 60px;
+    }
 
     main{
         width: 300px;
