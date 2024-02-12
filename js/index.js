@@ -24,7 +24,7 @@ const handleClick = function() {
     pad.removeEventListener('click', handleClick)
     playsCount++
     
-    if(playsCount == 9){
+    if(playsCount == 9 && win == false){
         PLAYER_INFO.innerHTML = "DRAW!"
         PLAYER_INFO.style.color = "green"
         PADS_DOM.forEach(pad =>{
@@ -39,6 +39,7 @@ const REMATCH_BUTTON = document.getElementById('rematch').onclick = () =>{
     player1Turn = false
     player2Turn = false
     playsCount = 0
+    win = false
 
 
     PADS_DOM.forEach(pad =>{
@@ -57,6 +58,7 @@ const REMATCH_BUTTON = document.getElementById('rematch').onclick = () =>{
 //Variables
 let player1Turn = false
 let player2Turn = false
+let win = false
 let playsCount = 0
 
 //Functions
@@ -156,8 +158,8 @@ function finalAdjusts(x,y,z, whoWin){
     PLAYER_INFO.style.color = "blue"
 
    }
-   
-    
+
+   win = true 
 
     PADS_DOM.forEach(pad =>{
         pad.removeEventListener('click', handleClick)
