@@ -54,7 +54,6 @@ const REMATCH_BUTTON = document.getElementById('rematch').onclick = () =>{
     whoStart()
 }
 
-
 //Variables
 let player1Turn = false
 let player2Turn = false
@@ -166,7 +165,6 @@ function finalAdjusts(x,y,z, whoWin){
     })
 
 }
-
 
 //Code Itself
 whoStart()
